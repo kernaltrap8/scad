@@ -4,29 +4,32 @@
 // https://www.gnu.org/licenses/gpl-3.0.en.html
 
 $fn = 100;
+ornament_xyz = [7.6, 10.7, 0];
 
 module keychain_p1() {
     translate([0, 0, 0]) {
         linear_extrude(1) {
-            text("G", size = 10, font = "Nightmare Hero");
+            text("G", size = 13, font = "Nightmare Hero");
         }
     }
 }
 
 module keychain_p2() {
-    translate([5, -3, 0]) {
+    translate([6.8, -3, 0]) {
         linear_extrude(1) {
-            text("H", size = 10, font = "Nightmare Hero");
+            text("H", size = 13, font = "Nightmare Hero");
         }
     }
 }
 
-module keychain_ornament() {
-    difference() {
-        translate([6, 8, 0]) {
-            cylinder(r = 1);
+module ornament() {
+	difference() {
+    	translate(ornament_xyz) {
+            linear_extrude(1) {
+                circle(r = 1.7);
+            }
         }
-        translate([6, 8, 0]) {
+        translate(ornament_xyz) {
             cylinder(h = 1);
         }
     }
@@ -34,4 +37,4 @@ module keychain_ornament() {
 
 keychain_p1();
 keychain_p2();
-keychain_ornament();
+ornament();
